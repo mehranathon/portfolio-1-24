@@ -1,0 +1,72 @@
+.container{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    background-color: rgba(var(--foreground-rgb),.02);
+    padding:.5rem;
+    transform: translateY(-100%);
+    animation: .25s 1s slide-down ease-in forwards;
+}
+.buttons{
+    /* border:solid thin white; */
+}
+
+.button{
+    color:rgba(var(--foreground-rgb),.8);
+    margin:.25rem;
+    cursor:pointer;
+    padding: 0.5rem;
+    background-color: transparent !important;
+    border: none;
+}
+.button:hover{
+    background-color: rgba(var(--background-rgb),.7);
+}
+
+/* .button::after{
+    content:"";
+    position:absolute;
+    height:100%;
+    width:100%;
+    background-color: rgb(var(--background-rgb));
+    filter: invert(.05);
+    top:0;
+    left:0;
+    z-index:-2;
+    border-radius: .25rem;
+} */
+
+.button svg{
+    opacity:0;
+    animation: .25s .01s fadeup forwards;
+}
+
+.button:hover svg{
+    color:rgba(var(--foreground-rgb),1);
+}
+
+.button.active svg{
+    fill:rgb(var(--primary-color))
+}
+
+
+
+@keyframes slide-down{
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeup{
+    from{
+        opacity:0;
+        transform: translateY(100%);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
+}

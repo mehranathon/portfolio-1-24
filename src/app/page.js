@@ -1,95 +1,52 @@
+'use client'
 import Image from "next/image";
 import styles from "./page.module.css";
+import { TopNav } from "./TopNav/TopNav";
+import { Profile } from "./profile/Profile";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { ToolTip } from "./Tooltip/Tooltip";
+import { TooltipContext, TtProvider } from "./Providers";
 
 export default function Home() {
+  const [currentPage,setCurrentPage]=useState("aboutMe")
+  const [mouseXy,setMouseXy]=useState([0,0])
+  const [ttText,setTtText]=useState("")
+  const [ttVisible,setTtVisible]=useState(false)
+
+  const [tooltip,setTooltip]=useState({visible:false,text:"",mouseXy:[0,0]})
+
+  const visRef=useRef(ttVisible)
+
+  const trackmouse=({pageX,pageY})=>{
+    if(!visRef.current) return;
+    else setMouseXy([pageX,pageY])
+  }
+  const updateTooltip=({visible,text})=>{
+    if(!(ttVisible||visible)) return;
+    const delay=visible&&!ttVisible?1000:0
+    // console.log("updating tooltip",{visible,text})
+    setTtText(visible?text:ttText)
+    setTtVisible(visible)
+  }
+  
+  useEffect(()=>{
+    window.addEventListener("mousemove",trackmouse)
+  },[])
+  useEffect(()=>{
+    visRef.current=ttVisible
+  },[ttVisible])
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    <main className="main">
+      {/* <TtProvider value="hey"> */}
+      {/* <TooltipContext.Provider value={"hey"}> */}
+        <TopNav {...{currentPage,setCurrentPage,updateTooltip}}/>
+        <Profile {...{currentPage,updateTooltip}}/>
+        <ToolTip visible={ttVisible} text={ttText} mouseXy={mouseXy} />
+      {/* </TtProvider> */}
+      {/* </TooltipContext.Provider> */}
     </main>
   );
 }
+
