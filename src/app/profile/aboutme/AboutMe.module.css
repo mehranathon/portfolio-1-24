@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding: min(3vw,1rem);
 }
 .topCard{
     display: flex;
@@ -31,7 +32,7 @@
 }
 
 .headshotContainer.loaded{
-    animation:.5s fadein forwards;
+    animation:.5s .25s fadein forwards;
 }
 
 .info{
@@ -42,11 +43,11 @@
     margin-left: 1rem;
     background-color: rgba(var(--foreground-rgb),.02);
     height: 100%;
+    opacity:0;
     flex: 1;
     flex-direction: column;
     justify-content: center;
-    opacity:0;
-    animation:.25s fadein forwards;
+    animation:.25s .5s fadein forwards;
 }
 
 .info h1, .info h2, .info h3{
@@ -61,14 +62,14 @@
     max-height: min-content;
     padding:1rem;
     opacity:0;
-    animation: .25s .25 fadein forwards;
+    animation: .25s .5s fadein forwards;
 }
 .personalStatement p{
     opacity:0;
     line-height:0;
     /* margin-top:1rem; */
     /* max-width:30rem; */
-    animation: 1s .5s expand forwards;
+    animation: 1s .75s expand forwards;
 }
 
 @keyframes slideleft{
@@ -99,6 +100,21 @@
         margin-top:1rem;
     }
 
+}
+
+@keyframes expandhorizontal{
+    0%{
+        opacity:0;
+        max-width:1rem;
+    }
+    50%{
+        opacity:1;
+        max-width:1rem;
+    }
+    100%{
+        opacity:1;
+        max-width:100%;
+    }
 }
 
 @keyframes fadein{

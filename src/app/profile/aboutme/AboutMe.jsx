@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from "react"
 import styles from "./AboutMe.module.css"
+import { logGrowth } from "@/logGrowth"
 
 
 export const AboutMe=()=>{
@@ -20,9 +21,9 @@ export const AboutMe=()=>{
                     onLoad={()=>setImgLoaded(true)}/>
             </div>
             <div className={styles.info}>
-                <h1 style={{animationDelay:".25s"}}>Mehran Khamnehipour</h1>
-                <h2 style={{animationDelay:".35s"}}>Software Developer</h2>
-                <h3 style={{animationDelay:".45s"}}>Los Angeles, CA | <a href="mailto:mehran.khmn@gmail.com">mehran.khmn@gmail.com</a></h3>
+                <h1 style={{animationDelay:logGrowth[1]+delay+"s"}}>Mehran Khamnehipour</h1>
+                <h2 style={{animationDelay:logGrowth[2]+delay+"s"}}>Software Developer</h2>
+                <h3 style={{animationDelay:logGrowth[3]+delay+"s"}}>Los Angeles, CA | <a href="mailto:mehran.khmn@gmail.com">mehran.khmn@gmail.com</a></h3>
             </div>
         </div>
         <div className={styles.personalStatement}>
@@ -46,3 +47,5 @@ export const AboutMe=()=>{
     )
 
 }
+
+const delay=1

@@ -24,7 +24,9 @@ export const WorkHistory=()=>{
     return(
         <div className={styles.container}>
             <h1>Work History</h1>
-            {workHistory.map((entry,ind)=><WorkEntry key={`${entry.company}_entry`} {...{entry,ind,expanded:expanded[ind],trackExpanded}}/>)}
+            <div className={styles.entries}>
+                {workHistory.map((entry,ind)=><WorkEntry key={`${entry.company}_entry`} {...{entry,ind,expanded:expanded[ind],trackExpanded}}/>)}
+            </div>
         </div>
         
     )
