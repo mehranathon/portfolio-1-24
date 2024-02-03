@@ -25,33 +25,26 @@
     opacity:0;
     animation: .5s fadein ease-in forwards;
 }
+
 .button:hover{
     background-color: rgba(var(--background-rgb),.7);
 }
 
-/* .button::after{
-    content:"";
-    position:absolute;
-    height:100%;
-    width:100%;
-    background-color: rgb(var(--background-rgb));
-    filter: invert(.05);
-    top:0;
-    left:0;
-    z-index:-2;
-    border-radius: .25rem;
-} */
 
 .button svg{
     opacity:0;
     animation: .25s .01s fadeup forwards;
+    transition: fill .25s;
+}
+.button:active:hover svg{
+    fill:rgba(var(--primary-color))
 }
 
 .button:hover svg{
     color:rgba(var(--foreground-rgb),1);
 }
 
-.button.active svg{
+.button.onpage svg{
     fill:rgb(var(--primary-color))
 }
 

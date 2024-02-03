@@ -93,6 +93,7 @@
     line-height:0;
 }
 
+
 .cycleButton:first-child  svg{
     transform:translateX(20%)
 }
