@@ -1,4 +1,4 @@
-
+'use client'
 import { useState } from 'react'
 import styles from './Profile.module.css'
 import { SkillsBox } from './SkillsBox'
@@ -6,7 +6,7 @@ import { skills } from '@/skills'
 import { WorkHistory } from './WorkHistory'
 import { AboutMe } from './AboutMe'
 
-export const Profile=({currentPage})=>{
+export const Profile=({children})=>{
     console.log(skillList)
     // const lnX=Array.from(Array(10).keys())
     // console.log(Array.from(Array(100).keys()).map(n=>parseFloat(Math.log(1+n*.05).toFixed(2))))
@@ -22,32 +22,37 @@ export const Profile=({currentPage})=>{
         if(upDown+currentSkill<0) return skillList.length-1;
         return upDown+currentSkill;
     }
-    if(currentPage==="aboutMe") return(
+    return(
         <div className={styles.TopContainer}>
-            <AboutMe {...{imgLoaded,setImgLoaded}}/>
+            {children}
         </div>
     )
-    if(currentPage==="workHistory") return(
-        <div className={styles.TopContainer}>
-            <WorkHistory/>
-        </div>
-    )
-    if(currentPage==="skills") return(
+    // if(currentPage==="aboutMe") return(
+    //     <div className={styles.TopContainer}>
+    //         <AboutMe {...{imgLoaded,setImgLoaded}}/>
+    //     </div>
+    // )
+    // if(currentPage==="workHistory") return(
+    //     <div className={styles.TopContainer}>
+    //         <WorkHistory/>
+    //     </div>
+    // )
+    // if(currentPage==="skills") return(
 
-        <div className={styles.TopContainer}>
-            <h2 
-                key={skillList[currentSkill]} 
-                className={styles[upDown?"slideRight":"slideLeft"]}
-            >
-                {skillList[currentSkill]}
-            </h2>
-            <SkillsBox 
-                skill={skillList[currentSkill]} 
-                cycleSkill={cycleSkill} 
-                upDown={upDown}                
-            />
-        </div>
-    )
+    //     <div className={styles.TopContainer}>
+    //         <h2 
+    //             key={skillList[currentSkill]} 
+    //             className={styles[upDown?"slideRight":"slideLeft"]}
+    //         >
+    //             {skillList[currentSkill]}
+    //         </h2>
+    //         <SkillsBox 
+    //             skill={skillList[currentSkill]} 
+    //             cycleSkill={cycleSkill} 
+    //             upDown={upDown}                
+    //         />
+    //     </div>
+    // )
 }
 
 const skillList=Object.keys(skills)

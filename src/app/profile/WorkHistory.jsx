@@ -1,3 +1,5 @@
+'use client'
+
 import { workHistory } from "@/workHistory"
 import styles from "./WorkHistory.module.css"
 import { WorkEntry } from "./workEntry";

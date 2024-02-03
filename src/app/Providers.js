@@ -1,3 +1,4 @@
+'use client'
 import { createContext, useEffect, useReducer, useRef } from "react";
 
 export const TooltipContext=createContext(null)

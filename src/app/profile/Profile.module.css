@@ -24,7 +24,7 @@
     height: 100%;
     padding: 0.5rem 1rem;
     min-width: fit-content;
-    width: 80%;
+    width: 80vw;
     margin: 1rem;
     transition: .5s height;
     align-items: center;

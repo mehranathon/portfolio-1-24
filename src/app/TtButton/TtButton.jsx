@@ -1,3 +1,4 @@
+'use client'
 import { TooltipContext } from "../Providers";
 import { useContext, useRef } from "react"
 import styles from "./ToolTip.module.css"

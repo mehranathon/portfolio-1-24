@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react"
+'use client'
+import { useEffect, useRef, useState } from "react"
 import styles from "./AboutMe.module.css"
 
 
-export const AboutMe=({imgLoaded,setImgLoaded})=>{
+export const AboutMe=()=>{
     const headshot=useRef(null)
+    const [imgLoaded,setImgLoaded]=useState(false)
     useEffect(()=>{
         if (headshot.current.complete) setImgLoaded(true)
     },[])

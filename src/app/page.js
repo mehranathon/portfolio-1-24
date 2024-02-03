@@ -1,20 +1,11 @@
-'use client'
 import { TopNav } from "./TopNav/TopNav";
-import { Profile } from "./profile/Profile";
-import { useState } from "react";
 import {ToolTip} from "./TtButton/TtButton"
 import { TtProvider } from "./Providers";
+import RootLayout from "./layout";
 
-export default function Home() {
-  const [currentPage,setCurrentPage]=useState("aboutMe")
+export default function Home({children}) {
   return (
-    <main className="main">
-      <TtProvider>
-        <TopNav {...{currentPage,setCurrentPage}}/>
-        <Profile {...{currentPage}}/>
-        <ToolTip/>
-      </TtProvider>
-    </main>
+    <RootLayout/>
   );
 }
 

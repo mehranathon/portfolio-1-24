@@ -1,11 +1,27 @@
+'use client'
+
 import { proficiencyKey, skills } from "@/skills"
 import styles from "./Profile.module.css"
 import ArrowBackIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIos';
 import { logGrowth } from "@/logGrowth";
 import { TtButton } from "../TtButton/TtButton";
+import { useState } from "react";
 
-export const SkillsBox=({skill,cycleSkill,upDown})=>{
+export const SkillsBox=()=>{
+    const [currentSkill,setCurrentSkill]=useState(0)
+    const [upDown,setUpDown]=useState(null)
+    const cycleSkill=(upDown)=>{
+        setCurrentSkill(getInd(upDown))
+        setUpDown(upDown>0)
+    }
+    const getInd=(upDown)=>{
+        if(upDown+currentSkill>=skillList.length) return 0;
+        if(upDown+currentSkill<0) return skillList.length-1;
+        return upDown+currentSkill;
+    }
+
+    const skill=skillList[currentSkill]
     return(
         <div className={styles.SkillsContainer}>
             <TtButton
@@ -61,3 +77,5 @@ export const SkillsBox=({skill,cycleSkill,upDown})=>{
         </div>
     )
 }
+
+const skillList=Object.keys(skills)

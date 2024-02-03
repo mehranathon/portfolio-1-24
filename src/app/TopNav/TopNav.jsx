@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect, useContext } from "react"
 import { TtProvider,TooltipContext } from "../Providers";
 
@@ -11,10 +12,13 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 // import { TestButton } from "../TestButton/TestButton";
 import CheckroomIcon from '@mui/icons-material/Checkroom';
 import { TtButton } from "../TtButton/TtButton";
+import { usePathname, useRouter } from "next/navigation";
 
 
 export const TopNav=({setCurrentPage,currentPage,updateTooltip})=>{
     const [darkMode,setDarkMode]=useState(true)
+    const router=useRouter()
+    const pathname=usePathname()
     // useEffect(()=>{
     //     const docStyle=document.documentElement.style
     //     docStyle.setProperty("--color-transition", ".25s")
@@ -39,22 +43,23 @@ export const TopNav=({setCurrentPage,currentPage,updateTooltip})=>{
         <div className={styles.container}>
             <div className={styles.buttons}>
                 <TtButton 
-                    className={`${styles.button} ${currentPage==="aboutMe"?styles.active:""}`}
-                    onClick={()=>setCurrentPage("aboutMe")}
+                    className={`${styles.button} ${pathname.endsWith("aboutme")?styles.active:""}`}
+                    onClick={()=>router.push("/profile/aboutme")}
                     icon=<EmojiPeopleIcon />
                     tooltip="About Me"
 
                 />
                 <TtButton 
-                    className={`${styles.button} ${currentPage==="skills"?styles.active:""}`}
-                    onClick={()=>setCurrentPage("skills")}
+                    className={`${styles.button} ${pathname.endsWith("skills")?styles.active:""}`}
+                    onClick={()=>router.push("/profile/skills")}
+                    // onClick={()=>setCurrentPage("skills")}
                     icon=<FactCheckIcon />
                     tooltip="Skills"
 
                 />
                 <TtButton 
-                    className={`${styles.button} ${currentPage==="workHistory"?styles.active:""}`}
-                    onClick={()=>setCurrentPage("workHistory")}
+                    className={`${styles.button} ${pathname.endsWith("workhistory")?styles.active:""}`}
+                    onClick={()=>router.push("/profile/workhistory")}
                     icon=<WorkIcon />
                     tooltip="Work History"
                 />
