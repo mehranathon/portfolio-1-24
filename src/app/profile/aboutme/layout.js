@@ -1,4 +1,4 @@
-import { AboutMe } from "../AboutMe";
+import { AboutMe } from "./AboutMe";
 
 export default function AboutMeLayout({children}) {
     return (

@@ -1,5 +1,5 @@
-import { AboutMe } from "../AboutMe";
-import { SkillsBox } from "../SkillsBox";
+import { AboutMe } from "../aboutme/AboutMe";
+import { SkillsBox } from "./Skills";
 
 export default function SkillsLayout({children}) {
     return (

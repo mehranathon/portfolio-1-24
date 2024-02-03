@@ -3,7 +3,7 @@ import styles from "./WorkHistory.module.css"
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useState } from "react";
-import { TtButton } from "../TtButton/TtButton";
+import { TtButton } from "../../TtButton/TtButton";
 export const WorkEntry=({entry,ind,expanded,trackExpanded})=>{
     // const [collapsed,setCollapsed]=useState(false)
     const toggleCollapsed=()=>{

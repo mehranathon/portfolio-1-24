@@ -1,11 +1,11 @@
 'use client'
 
-import { proficiencyKey, skills } from "@/skills"
-import styles from "./Profile.module.css"
+import { proficiencyKey, skills } from "@/skills";
+import styles from "./Skills.module.css";
 import ArrowBackIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIos';
 import { logGrowth } from "@/logGrowth";
-import { TtButton } from "../TtButton/TtButton";
+import { TtButton } from "@/app/TtButton/TtButton";
 import { useEffect, useState } from "react";
 
 export const SkillsBox=()=>{

@@ -1,4 +1,5 @@
-import { WorkHistory } from "../WorkHistory";
+import { WorkHistory } from "./WorkHistory";
+
 
 export default function WorkHistoryLayout({children}) {
     return (

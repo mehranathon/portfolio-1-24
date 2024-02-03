@@ -9,14 +9,6 @@ import { useEffect, useState } from "react";
 export const WorkHistory=()=>{
     const stored=sessionStorage.getItem("expanded-entries")
     const [expanded,setExpanded]=useState(stored?JSON.parse(stored):workHistory.map(()=>true))
-    // useEffect(()=>{
-    //     const stored=sessionStorage.getItem("expanded-entries")
-    //     if(stored) {
-    //         console.log(stored,JSON.parse(stored))
-    //         setExpanded(JSON.parse(stored))
-    //     }
-    //     else storeExpanded(expanded)
-    // },[])
     const trackExpanded=(ind,bool)=>{
         console.log("tracking",expanded)
         const prevExpanded=[...expanded]
