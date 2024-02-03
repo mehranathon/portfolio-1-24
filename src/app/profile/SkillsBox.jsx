@@ -6,13 +6,15 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIos';
 import { logGrowth } from "@/logGrowth";
 import { TtButton } from "../TtButton/TtButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const SkillsBox=()=>{
     const [currentSkill,setCurrentSkill]=useState(0)
     const [upDown,setUpDown]=useState(null)
     const cycleSkill=(upDown)=>{
-        setCurrentSkill(getInd(upDown))
+        const ind=getInd(upDown)
+        setCurrentSkill(ind)
+        sessionStorage.setItem("skill",skillList[ind])
         setUpDown(upDown>0)
     }
     const getInd=(upDown)=>{
@@ -22,58 +24,65 @@ export const SkillsBox=()=>{
     }
 
     const skill=skillList[currentSkill]
+    useEffect(()=>{
+        const stored=sessionStorage.getItem("skill")
+        if(stored)setCurrentSkill(skillList.indexOf(stored))
+    })
     return(
-        <div className={styles.SkillsContainer}>
-            <TtButton
-                className={styles.cycleButton} 
-                onClick={()=>cycleSkill(-1)}
-                icon=<ArrowBackIcon/>
-                tooltip="Previous"
-            
-            />
-            <div className={styles.skillContent}>
-            {
-                skills[skill].map((entry,ind)=>{
-                    return (
-                        <div className={styles.skill} key={entry.name}>
-                        <div 
-                            className={`${styles.title} ${styles[upDown?"slideRight":"slideLeft"]}`}
-                            style={{animationDelay:logGrowth[ind]+"s"}}
-                        >
-                            <h3 
-                                className={styles.skillName} 
-                                style={{filter:`hue-rotate(${(entry.proficieny+1)*.25*180}deg)`,}}
+        <div className={styles.container}>
+            <h1 className={styles.skillHeader}>{skill}</h1>
+            <div className={styles.SkillsContainer}>
+                <TtButton
+                    className={styles.cycleButton} 
+                    onClick={()=>cycleSkill(-1)}
+                    icon=<ArrowBackIcon/>
+                    tooltip="Previous"
+                
+                />
+                <div className={styles.skillContent}>
+                {
+                    skills[skill].map((entry,ind)=>{
+                        return (
+                            <div className={styles.skill} key={entry.name}>
+                            <div 
+                                className={`${styles.title} ${styles[upDown?"slideRight":"slideLeft"]}`}
+                                style={{animationDelay:logGrowth[ind]+"s"}}
                             >
-                                {entry.name}
-                            </h3>
-                            <span>{entry.years} yrs</span>
-                        </div>
-                            <div className={styles.progressBar}>
-                                <span 
-                                    className={styles.proficiency}
-                                    style={{animationDelay:(logGrowth[ind]+1)+"s"}}
+                                <h3 
+                                    className={styles.skillName} 
+                                    style={{filter:`hue-rotate(${(entry.proficieny+1)*.25*180}deg)`,}}
                                 >
-                                    {proficiencyKey[entry.proficieny]}
-                                </span>
-                                <div 
-                                    className={styles.progress} 
-                                    style={{
-                                        width:entry.proficieny*25+25+"%",
-                                        filter:`hue-rotate(${(entry.proficieny+1)*.25*180}deg)`,
-                                        animationDelay:logGrowth[ind]+.5+"s"
-                                    }}        
-                                />
+                                    {entry.name}
+                                </h3>
+                                <span>{entry.years} yrs</span>
                             </div>
-                        </div>
-                    )
-            })}
+                                <div className={styles.progressBar}>
+                                    <span 
+                                        className={styles.proficiency}
+                                        style={{animationDelay:(logGrowth[ind]+1)+"s"}}
+                                    >
+                                        {proficiencyKey[entry.proficieny]}
+                                    </span>
+                                    <div 
+                                        className={styles.progress} 
+                                        style={{
+                                            width:entry.proficieny*25+25+"%",
+                                            filter:`hue-rotate(${(entry.proficieny+1)*.25*180}deg)`,
+                                            animationDelay:logGrowth[ind]+.5+"s"
+                                        }}        
+                                    />
+                                </div>
+                            </div>
+                        )
+                })}
+                </div>
+                <TtButton
+                    className={styles.cycleButton} 
+                    onClick={()=>cycleSkill(1)}
+                    icon=<ArrowForwardIcon/>
+                    tooltip="Next"
+                />
             </div>
-            <TtButton
-                className={styles.cycleButton} 
-                onClick={()=>cycleSkill(1)}
-                icon=<ArrowForwardIcon/>
-                tooltip="Next"
-            />
         </div>
     )
 }

@@ -16,29 +16,35 @@ import { usePathname, useRouter } from "next/navigation";
 
 
 export const TopNav=({setCurrentPage,currentPage,updateTooltip})=>{
-    const [darkMode,setDarkMode]=useState(true)
-    const router=useRouter()
-    const pathname=usePathname()
-    // useEffect(()=>{
-    //     const docStyle=document.documentElement.style
-    //     docStyle.setProperty("--color-transition", ".25s")
-    //     docStyle.setProperty("--background-rgb", "25,25,25")
-    //     docStyle.setProperty("--foreground-rgb", "255,255,255")
-    // },[])
+    const [darkMode,setDarkMode] = useState(true)
+    const router = useRouter()
+    const pathname = usePathname()
 
-    const toggleMode=()=>{
+    useEffect(()=>{
+        const docStyle=document.documentElement.style
+        docStyle.setProperty("--color-transition", ".25s")
+        const userPref=localStorage.getItem("mode")
+        if(userPref) setMode(userPref==="dark"?true:false)
+        sessionStorage.setItem("skill","Languages")
+    },[])
+    const setMode = (darkMode) => {
         const docStyle=document.documentElement.style
         if (darkMode) {
-            docStyle.setProperty("--background-rgb", "255,249,238")
-            docStyle.setProperty("--foreground-rgb", "50,50,50")
-            setDarkMode(false)
-        }
-        else {
             docStyle.setProperty("--background-rgb", "25,25,25")
             docStyle.setProperty("--foreground-rgb", "255,255,255")
+            localStorage.setItem("mode","dark")
             setDarkMode(true)
         }
+        else {
+            docStyle.setProperty("--background-rgb", "255,249,238")
+            docStyle.setProperty("--foreground-rgb", "50,50,50")
+            localStorage.setItem("mode","light")
+            setDarkMode(false)
+        }
+        
     }
+    const toggleMode = () => setMode(!darkMode)
+
     return(
         <div className={styles.container}>
             <div className={styles.buttons}>

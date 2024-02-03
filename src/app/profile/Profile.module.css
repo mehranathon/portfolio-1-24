@@ -9,6 +9,14 @@
     border-radius: 0.25rem;
     overflow-x: hidden;
 }
+
+.container{
+    overflow: hidden;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .slideRight{
     opacity:0;
     animation:.5s slideright forwards;
@@ -18,14 +26,18 @@
     animation:.5s slideleft forwards;
 }
 
+.skillHeader{
+    text-align: center;
+}
+
 .SkillsContainer{
     display: flex;
     position: relative;
     height: 100%;
     padding: 0.5rem 1rem;
+    margin:1rem 0;
     min-width: fit-content;
-    width: 80vw;
-    margin: 1rem;
+    width: 100%;
     transition: .5s height;
     align-items: center;
     overflow: hidden;

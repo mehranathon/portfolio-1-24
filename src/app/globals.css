@@ -106,6 +106,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+h1{
+  font-size: 2em;;
+}
 *{
   transition-property: color, background-color;
   transition-delay:0s;
@@ -116,6 +119,23 @@ a {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+.top-container{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding:1rem;
+  align-items: flex-start;
+}
+section{
+  display: flex;
+  height: inherit;
+  flex: 1;
+  justify-content: center;
+  flex-direction: column;
+  /* font-size:1em; */
 }
 
 @media (prefers-color-scheme: dark) {

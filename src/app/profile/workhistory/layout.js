@@ -1,8 +1,6 @@
 import { WorkHistory } from "../WorkHistory";
 
-export default function WorkHistoryLayout({
-    children, // will be a page or nested layout
-  }) {
+export default function WorkHistoryLayout({children}) {
     return (
       <section>
         <WorkHistory/>
