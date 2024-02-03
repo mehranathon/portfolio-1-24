@@ -107,7 +107,13 @@ a {
   text-decoration: none;
 }
 h1{
-  font-size: 2em;;
+  font-size: min(6vw,2em);
+}
+h2{
+  font-size: min(5vw,1.5em);
+}
+.info h3{
+  font-size: min(4vw,1.17em);
 }
 *{
   transition-property: color, background-color;
@@ -126,7 +132,6 @@ h1{
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  padding:1rem;
   align-items: flex-start;
 }
 section{

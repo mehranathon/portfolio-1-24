@@ -3,7 +3,7 @@ import { TooltipContext } from "../Providers";
 import { useContext, useRef } from "react"
 import styles from "./ToolTip.module.css"
 
-export const TtButton = ({onClick,className,hidden,icon,tooltip})=>{
+export const TtButton = ({onClick,className,hidden,icon,tooltip,style})=>{
     const ttContext = useContext(TooltipContext)
     const onMouseEnter = () => ttContext.dispatch({visible:true,text:tooltip})
     const onMouseLeave = () => ttContext.dispatch({visible:false})
@@ -16,6 +16,7 @@ export const TtButton = ({onClick,className,hidden,icon,tooltip})=>{
                 hidden,
                 onMouseEnter,
                 onMouseLeave,
+                style:style
             }}
             >
                 {icon}

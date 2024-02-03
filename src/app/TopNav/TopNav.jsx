@@ -13,12 +13,20 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
 import { TtButton } from "../TtButton/TtButton";
 import { usePathname, useRouter } from "next/navigation";
+import { logGrowth } from "@/logGrowth";
 
 
-export const TopNav=({setCurrentPage,currentPage,updateTooltip})=>{
+export const TopNav=()=>{
     const [darkMode,setDarkMode] = useState(true)
     const router = useRouter()
     const pathname = usePathname()
+    const [currentPage,setCurrentPage]=useState(pathname)
+
+    const navTo=(path)=>{
+        //need to account for lag between click and server-side rendering
+        setCurrentPage(path)
+        router.push(path)
+    }
 
     useEffect(()=>{
         const docStyle=document.documentElement.style
@@ -49,33 +57,39 @@ export const TopNav=({setCurrentPage,currentPage,updateTooltip})=>{
         <div className={styles.container}>
             <div className={styles.buttons}>
                 <TtButton 
-                    className={`${styles.button} ${pathname.endsWith("aboutme")?styles.active:""}`}
-                    onClick={()=>router.push("/profile/aboutme")}
+                    className={`${styles.button} ${currentPage.endsWith("aboutme")?styles.onpage:""}`}
+                    onClick={()=>navTo("/profile/aboutme")}
                     icon=<EmojiPeopleIcon />
                     tooltip="About Me"
+                    style={{animationDelay:logGrowth[1]+delay+"s"}}
 
                 />
                 <TtButton 
-                    className={`${styles.button} ${pathname.endsWith("skills")?styles.active:""}`}
-                    onClick={()=>router.push("/profile/skills")}
+                    className={`${styles.button} ${currentPage.endsWith("skills")?styles.onpage:""}`}
+                    onClick={()=>navTo("/profile/skills")}
                     // onClick={()=>setCurrentPage("skills")}
                     icon=<FactCheckIcon />
                     tooltip="Skills"
+                    style={{animationDelay:logGrowth[2]+delay+"s"}}
 
                 />
                 <TtButton 
-                    className={`${styles.button} ${pathname.endsWith("workhistory")?styles.active:""}`}
-                    onClick={()=>router.push("/profile/workhistory")}
+                    className={`${styles.button} ${currentPage.endsWith("workhistory")?styles.onpage:""}`}
+                    onClick={()=>navTo("/profile/workhistory")}
                     icon=<WorkIcon />
                     tooltip="Work History"
+                    style={{animationDelay:logGrowth[3]+delay+"s"}}
                 />
             </div>
             <TtButton 
-                className={`${styles.button} ${currentPage===0?styles.active:""}`}
+                className={styles.button}
                 onClick={toggleMode}
                 icon={darkMode?<DarkModeIcon/>:<LightModeIcon/>}
                 tooltip={darkMode?"Dark Mode":"Light Mode"}
+                style={{animationDelay:logGrowth[4]+delay+"s"}}
             />
         </div>
     )
 }
+
+const delay=1

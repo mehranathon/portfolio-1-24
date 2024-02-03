@@ -1,11 +1,15 @@
 .container{
     display:flex;
     justify-content: space-between;
-    width:100%;
     background-color: rgba(var(--foreground-rgb),.02);
     padding:.5rem;
-    transform: translateY(-100%);
-    animation: .25s 1s slide-down ease-in forwards;
+    opacity:0;
+    /* transform: translateY(-120%); */
+    /* animation: .25s 1s slide-down ease-in forwards; */
+    animation: .25s .5s fadein ease-in forwards;
+    margin: min(3vw,1rem);
+    margin-top: 0.5rem;
+    margin-bottom: 0;
 }
 .buttons{
     /* border:solid thin white; */
@@ -18,34 +22,29 @@
     padding: 0.5rem;
     background-color: transparent !important;
     border: none;
+    opacity:0;
+    animation: .5s fadein ease-in forwards;
 }
+
 .button:hover{
     background-color: rgba(var(--background-rgb),.7);
 }
 
-/* .button::after{
-    content:"";
-    position:absolute;
-    height:100%;
-    width:100%;
-    background-color: rgb(var(--background-rgb));
-    filter: invert(.05);
-    top:0;
-    left:0;
-    z-index:-2;
-    border-radius: .25rem;
-} */
 
 .button svg{
     opacity:0;
     animation: .25s .01s fadeup forwards;
+    transition: fill .25s;
+}
+.button:active:hover svg{
+    fill:rgba(var(--primary-color))
 }
 
 .button:hover svg{
     color:rgba(var(--foreground-rgb),1);
 }
 
-.button.active svg{
+.button.onpage svg{
     fill:rgb(var(--primary-color))
 }
 
@@ -53,7 +52,7 @@
 
 @keyframes slide-down{
     from{
-        transform: translateY(-100%);
+        transform: translateY(-120%);
     }
     to{
         transform: translateY(0);
@@ -68,5 +67,14 @@
     to{
         opacity:1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
     }
 }
