@@ -7,6 +7,7 @@ import { WorkHistory } from './WorkHistory'
 import { AboutMe } from './AboutMe'
 
 export const Profile=({currentPage})=>{
+    console.log(skillList)
     // const lnX=Array.from(Array(10).keys())
     // console.log(Array.from(Array(100).keys()).map(n=>parseFloat(Math.log(1+n*.05).toFixed(2))))
     const [currentSkill,setCurrentSkill]=useState(0)
@@ -31,7 +32,10 @@ export const Profile=({currentPage})=>{
             <WorkHistory/>
         </div>
     )
+    console.log(currentSkill)
+    console.log(skillList[currentSkill])
     if(currentPage==="skills") return(
+
         <div className={styles.TopContainer}>
             <h2 
                 key={skillList[currentSkill]} 

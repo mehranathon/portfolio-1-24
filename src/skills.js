@@ -1,5 +1,5 @@
 export const skills={
-    languages:[
+    Languages:[
         {
             name:"Javascript",
             years:3.5,
@@ -31,7 +31,7 @@ export const skills={
             proficieny:2
         },
     ],
-    frameworks:[
+    Frameworks:[
         {
             name:"React",
             years:2,
@@ -53,7 +53,7 @@ export const skills={
             proficieny:2
         },
     ],
-    ["libraries, runtimes, software"]:[
+    ["Libraries, Runtimes, Software"]:[
         {
             name:"AWS",
             years:1.5,

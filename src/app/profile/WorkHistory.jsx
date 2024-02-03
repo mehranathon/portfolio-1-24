@@ -4,7 +4,6 @@ import { WorkEntry } from "./workEntry";
 
 
 export const WorkHistory=()=>{
-    console.log(workHistory)
     return(
         <div className={styles.container}>
             <h1>Work History</h1>
