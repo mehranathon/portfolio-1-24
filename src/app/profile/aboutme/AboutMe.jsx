@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react"
+'use client'
+import { useEffect, useRef, useState } from "react"
 import styles from "./AboutMe.module.css"
 
 
-export const AboutMe=({imgLoaded,setImgLoaded})=>{
+export const AboutMe=()=>{
     const headshot=useRef(null)
+    const [imgLoaded,setImgLoaded]=useState(false)
     useEffect(()=>{
         if (headshot.current.complete) setImgLoaded(true)
     },[])
@@ -14,7 +16,7 @@ export const AboutMe=({imgLoaded,setImgLoaded})=>{
                 <img 
                     className={styles.headshot} 
                     ref={headshot} 
-                    src={"/headshot.jpeg"} 
+                    src={"/headshot-square.jpeg"} 
                     onLoad={()=>setImgLoaded(true)}/>
             </div>
             <div className={styles.info}>
@@ -31,10 +33,10 @@ export const AboutMe=({imgLoaded,setImgLoaded})=>{
             <p>For the past year and a half, I have been working as a full-stack developer on an enterprise web application with microservice 
             architecture in the AWS Cloud with a modern tech stack and CI/CD pipeline. I had the chance to build, enhance, and maintain features 
             from the ground up i.e. from db calls to api design to ui implementation.</p>
-            <p>My professional experience as a developer has been defined by getting thrown into the deep end and picking up new technologies on 
-            the go. In other words, I have a proven track record of learning, adapting, and delivering on the job. I'm not afraid to ask for help, 
-            though I am very much self-taught and self-motivated. I am eager for feedback and direction but fully capable of shipping quality 
-            products and features independently.</p>
+            <p>My career as a developer has been defined by getting thrown into the deep end and picking up new technologies on the go. In other 
+            words, I have a proven track record of learning, adapting, and delivering on the job. I'm not afraid to ask for help, though I am very 
+            much self-taught and self-motivated. I am eager for feedback and direction but fully capable of shipping quality products and features 
+            independently.</p>
             <p>I'm currently working on porting some of my personal projects over to this website. In the meantime, feel free to click around and 
             browse my credentials. Please reach out for any additional resources should you be interested in working together.</p>
             <p>Cheers!</p>

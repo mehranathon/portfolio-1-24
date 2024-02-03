@@ -1,8 +1,15 @@
+'use client'
 import { createContext, useEffect, useReducer, useRef } from "react";
 
 export const TooltipContext=createContext(null)
 
-const initialState={visible:false,text:"",mouseXy:[0,0]}
+const initialState =
+{
+    visible:false,
+    text:"",
+    mouseXy:[0,0],
+}
+
 const reducer=(state,action)=>({...state,...action})
 
 export const TtProvider=(props)=>{
