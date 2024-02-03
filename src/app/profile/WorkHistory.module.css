@@ -1,0 +1,119 @@
+.container{
+    position:relative;
+    margin:0 1rem;
+    padding:0rem;
+
+}
+
+.responsibilities{
+    padding:0;
+    padding-left:1rem;
+    
+}
+.responsibilities:not(.collapsed,.expanded){
+    line-height: 0;
+    opacity:0;
+    animation:.5s expand forwards;
+}
+
+.responsibilities.collapsed{
+    line-height: 0;
+    opacity:0;
+    transition:.25s .25s line-height, .25s opacity;
+}
+.responsibilities.expanded{
+    line-height: 1;
+    opacity:1;
+    transition:.25s line-height, .25s .25s opacity;
+}
+
+.responsibilities li{
+    line-height: inherit;
+}
+.entry{
+    position:relative;
+    padding:.5rem;
+    margin: 1rem 0;
+    opacity:0;
+    animation: .5s slideup forwards;
+    background-color: rgba(var(--foreground-rgb),.02);
+    border-radius: .25rem;
+}
+
+.entry .header{
+    display:flex;
+    justify-content: space-between;
+
+}
+
+.company{
+    color: rgb(var(--primary-color));
+}
+
+.dates{
+    display:block;
+    margin-bottom:.5rem;
+}
+
+.toggleCollapse{
+    cursor:pointer;
+    position:absolute;
+    top:0;
+    right:0;
+    margin:.5rem;
+    font-size: 0;
+    /* font-size: .25rem;
+    border-radius: 50%;
+    border:none; */
+}
+
+
+@keyframes expand{
+    0%{
+        line-height:0;
+        opacity:0;
+    }
+    50%{
+        line-height: 1;
+        opacity:0;
+    }
+    100%{
+        line-height: 1;
+        opacity:1;
+    }
+}
+
+@keyframes collapse{
+    0%{
+        line-height:1;
+        opacity:1;
+    }
+    50%{
+        line-height: 1;
+        opacity:0;
+    }
+    100%{
+        line-height: 0;
+        opacity:0;
+    }
+}
+
+@keyframes fadein{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
+}
+
+@keyframes slideup{
+    from{
+        transform: translateY(100%);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0%);
+        opacity:1;
+    }
+}

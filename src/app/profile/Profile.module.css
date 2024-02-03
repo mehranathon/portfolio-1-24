@@ -1,0 +1,133 @@
+.TopContainer{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.25rem;
+    overflow-x: hidden;
+}
+.slideRight{
+    opacity:0;
+    animation:.5s slideright forwards;
+}
+.slideLeft{
+    opacity:0;
+    animation:.5s slideleft forwards;
+}
+
+.SkillsContainer{
+    display: flex;
+    position: relative;
+    height: 100%;
+    padding: 0.5rem 1rem;
+    min-width: fit-content;
+    width: 80%;
+    margin: 1rem;
+    transition: .5s height;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgba(var(--foreground-rgb),.02);
+}
+.skillContent{
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    height: fit-content;
+    max-height: 100%;
+    padding: 0 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0 0.5rem;
+}
+.skill{
+    display:flex;
+    margin-bottom:1rem;
+}
+.skillName{
+    color: #ffa96f;
+}
+.title{
+    width:25%;
+    min-width: 7rem;
+}
+.progressBar{
+    position: relative;
+    width:100%;
+    border-radius:.25rem;
+    padding: 0.25rem;
+    overflow:hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: green; */
+}
+
+.proficiency{
+    position:relative;
+}
+
+.progress{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    height: 100%;
+    background-color: #cb8c62;
+    z-index:-1;
+    max-width:0%;
+    animation: .5s load forwards ease-in;
+    filter:hue-rotate(0deg);
+    transition: 1s filter;
+
+}
+.proficiency{
+    opacity:0;
+    animation: .25s fadein forwards;
+}
+.cycleButton{
+    cursor:pointer;
+}
+
+
+@keyframes load{
+    from{
+        max-width: 0%;
+    }
+    to{
+        max-width:100%;
+    }
+}
+
+@keyframes fadein{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
+}
+@keyframes slideleft{
+    from{
+        transform: translateX(100%);
+        opacity:0;
+    }
+    to{
+        transform:translateX(0%);
+        opacity:1;
+    }
+}
+
+@keyframes slideright{
+    from{
+        transform: translateX(-100%);
+        opacity:0;
+    }
+    to{
+        transform:translateX(0%);
+        opacity:1;
+    }
+}
