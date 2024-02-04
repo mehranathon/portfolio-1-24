@@ -1,23 +1,24 @@
 'use client'
 
-import { proficiencyKey, skills } from "@/skills";
+import { skills } from "@/skills";
 import styles from "./Skills.module.css";
 import ArrowBackIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIos';
-import { logGrowth } from "@/logGrowth";
 import { TtButton } from "@/app/TtButton/TtButton";
 import { useEffect, useState } from "react";
+import { SkillEntry } from "./SkillEntry";
 
 export const SkillsBox=()=>{
-    const [currentSkill,setCurrentSkill]=useState(0)
+    const [currentSkill,setCurrentSkill]=useState(parseInt(sessionStorage.getItem("skill"))||0)
     const skill=skillList[currentSkill]
     const [upDown,setUpDown]=useState(null)
-    const [profficiencies,setProfficiencies]=useState(null)
+    const [delayTransition,setDelayTranstition]=useState(true)
+
     const cycleSkill=(upDown)=>{
         const ind=getInd(upDown)
         setCurrentSkill(ind)
-        setProfficiencies(null)
-        sessionStorage.setItem("skill",skillList[ind])
+        setDelayTranstition(true)
+        sessionStorage.setItem("skill",ind)
         setUpDown(upDown>0)
     }
     const getInd=(upDown)=>{
@@ -27,13 +28,14 @@ export const SkillsBox=()=>{
     }
 
     useEffect(()=>{
-        const stored=sessionStorage.getItem("skill")
-        if(stored)setCurrentSkill(skillList.indexOf(stored))
-    })
-
-    useEffect(()=>{
-        setTimeout(()=>{setProfficiencies(skills[skill].map((entry)=>entry.proficieny))},250)
+        /**
+         * no transition if css prop changed on render; need to delay setting 
+         * elem style filter:(rotateHue deg) for hue transition;
+         * cannot hardcode as keyframes in css module because deg is dynamic
+         */
+        setTimeout(()=>{setDelayTranstition(false)},250)
     },[currentSkill])
+
     return(
         <div className={styles.container}>
             <h1
@@ -52,43 +54,16 @@ export const SkillsBox=()=>{
                 />
                 <div className={styles.skillContent}>
                 {
-                    skills[skill].map((entry,ind)=>{
-                        return (
-                            <div className={styles.skill} key={entry.name}>
-                            <div 
-                                className={`${styles.title} ${styles[upDown?"slideRight":"slideLeft"]}`}
-                            >
-                                <h3 
-                                    className={styles.skillName} 
-                                    style={{
-                                        filter:`hue-rotate(${!profficiencies?0:(profficiencies[ind]+1)*.25*180}deg)`,
-                                        transitionDelay:logGrowth[ind]+.5+"s",
-                                    }}
-                                >
-                                    {entry.name}
-                                </h3>
-                                <span>{entry.years} yrs</span>
-                            </div>
-                                <div className={styles.progressBar}>
-                                    <span 
-                                        className={styles.proficiency}
-                                        style={{animationDelay:(logGrowth[ind]+1)+"s"}}
-                                    >
-                                        {proficiencyKey[entry.proficieny]}
-                                    </span>
-                                    <div 
-                                        className={styles.progress} 
-                                        style={{
-                                            width:entry.proficieny*25+25+"%",
-                                            filter:`hue-rotate(${!profficiencies?0:(profficiencies[ind]+1)*.25*180}deg)`,
-                                            animationDelay:logGrowth[ind]+.5+"s",
-                                            transitionDelay:logGrowth[ind]+.5+"s"
-                                        }}        
-                                    />
-                                </div>
-                            </div>
-                        )
-                })}
+                    skills[skill].map((entry,ind) => 
+                        <SkillEntry key={`${entry.name}_entry`} 
+                        {...{
+                            entry, 
+                            ind, 
+                            upDown, 
+                            delayTransition
+                        }}    
+                        />
+                )}
                 </div>
                 <TtButton
                     className={styles.cycleButton} 
