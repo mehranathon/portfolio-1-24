@@ -2,11 +2,10 @@ import { logGrowth } from "@/logGrowth"
 import styles from "./WorkHistory.module.css"
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from "react";
 import { TtButton } from "../../TtButton/TtButton";
+
 export const WorkEntry=({entry,ind,expanded,trackExpanded})=>{
-    // const [collapsed,setCollapsed]=useState(false)
-    const toggleCollapsed=()=>{
+    const toggleExpanded=()=>{
         trackExpanded(ind,!expanded)
     }
 
@@ -19,7 +18,7 @@ export const WorkEntry=({entry,ind,expanded,trackExpanded})=>{
             <h2>{entry.title}</h2>
             <TtButton 
                 className={styles.toggleCollapse}
-                onClick={toggleCollapsed}
+                onClick={toggleExpanded}
                 icon={expanded?<RemoveIcon/>:<AddIcon/>}
                 tooltip={expanded?"collapse":"expand"}
             />
@@ -30,7 +29,7 @@ export const WorkEntry=({entry,ind,expanded,trackExpanded})=>{
                 style={{animationDelay:0.75+logGrowth[ind*2]+"s"}}
             >
             {
-                entry.responsibilities.map( (bullet,ind) =>
+            entry.responsibilities.map( (bullet,ind) =>
                 <li key={`${entry.company}_bullet${ind}`}>
                     {bullet}
                 </li>)
@@ -38,5 +37,4 @@ export const WorkEntry=({entry,ind,expanded,trackExpanded})=>{
             </ul>
         </div>
     )
-
 }
