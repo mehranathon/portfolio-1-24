@@ -1,5 +1,7 @@
 .container{
+    display: flex;
     position:relative;
+    flex-direction: column;
     padding:0rem;
     height: 100%;
     overflow:hidden;
