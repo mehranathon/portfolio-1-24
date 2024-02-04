@@ -1,10 +1,9 @@
-import { AboutMe } from "../aboutme/AboutMe";
-import { SkillsBox } from "./Skills";
+import { SkillCarousel } from "./SkillCarousel";
 
 export default function SkillsLayout({children}) {
     return (
       <section>
-        <SkillsBox/>
+        <SkillCarousel/>
       </section>
     )
   }

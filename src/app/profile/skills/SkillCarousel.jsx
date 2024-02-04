@@ -8,7 +8,7 @@ import { TtButton } from "@/app/TtButton/TtButton";
 import { useEffect, useState } from "react";
 import { SkillEntry } from "./SkillEntry";
 
-export const SkillsBox=()=>{
+export const SkillCarousel=()=>{
     const [currentSkill,setCurrentSkill]=useState(parseInt(sessionStorage.getItem("skill"))||0)
     const skill=skillList[currentSkill]
     const [upDown,setUpDown]=useState(null)
