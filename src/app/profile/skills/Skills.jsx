@@ -10,10 +10,13 @@ import { useEffect, useState } from "react";
 
 export const SkillsBox=()=>{
     const [currentSkill,setCurrentSkill]=useState(0)
+    const skill=skillList[currentSkill]
     const [upDown,setUpDown]=useState(null)
+    const [profficiencies,setProfficiencies]=useState(null)
     const cycleSkill=(upDown)=>{
         const ind=getInd(upDown)
         setCurrentSkill(ind)
+        setProfficiencies(null)
         sessionStorage.setItem("skill",skillList[ind])
         setUpDown(upDown>0)
     }
@@ -23,14 +26,22 @@ export const SkillsBox=()=>{
         return upDown+currentSkill;
     }
 
-    const skill=skillList[currentSkill]
     useEffect(()=>{
         const stored=sessionStorage.getItem("skill")
         if(stored)setCurrentSkill(skillList.indexOf(stored))
     })
+
+    useEffect(()=>{
+        setTimeout(()=>{setProfficiencies(skills[skill].map((entry)=>entry.proficieny))},250)
+    },[currentSkill])
     return(
         <div className={styles.container}>
-            <h1 className={styles.skillHeader}>{skill}</h1>
+            <h1
+                key={`${skill}_header`} 
+                className={`${styles.skillHeader} ${styles[upDown?"slideRight":"slideLeft"]}`}
+            >
+                {skill}
+            </h1>
             <div className={styles.SkillsContainer}>
                 <TtButton
                     className={styles.cycleButton} 
@@ -46,11 +57,13 @@ export const SkillsBox=()=>{
                             <div className={styles.skill} key={entry.name}>
                             <div 
                                 className={`${styles.title} ${styles[upDown?"slideRight":"slideLeft"]}`}
-                                style={{animationDelay:logGrowth[ind]+"s"}}
                             >
                                 <h3 
                                     className={styles.skillName} 
-                                    style={{filter:`hue-rotate(${(entry.proficieny+1)*.25*180}deg)`,}}
+                                    style={{
+                                        filter:`hue-rotate(${!profficiencies?0:(profficiencies[ind]+1)*.25*180}deg)`,
+                                        transitionDelay:logGrowth[ind]+.5+"s",
+                                    }}
                                 >
                                     {entry.name}
                                 </h3>
@@ -67,8 +80,9 @@ export const SkillsBox=()=>{
                                         className={styles.progress} 
                                         style={{
                                             width:entry.proficieny*25+25+"%",
-                                            filter:`hue-rotate(${(entry.proficieny+1)*.25*180}deg)`,
-                                            animationDelay:logGrowth[ind]+.5+"s"
+                                            filter:`hue-rotate(${!profficiencies?0:(profficiencies[ind]+1)*.25*180}deg)`,
+                                            animationDelay:logGrowth[ind]+.5+"s",
+                                            transitionDelay:logGrowth[ind]+.5+"s"
                                         }}        
                                     />
                                 </div>

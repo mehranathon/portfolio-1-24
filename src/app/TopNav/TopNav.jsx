@@ -33,7 +33,6 @@ export const TopNav=()=>{
         docStyle.setProperty("--color-transition", ".25s")
         const userPref=localStorage.getItem("mode")
         if(userPref) setMode(userPref==="dark"?true:false)
-        sessionStorage.setItem("skill","Languages")
     },[])
     const setMode = (darkMode) => {
         const docStyle=document.documentElement.style
