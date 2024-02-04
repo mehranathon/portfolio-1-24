@@ -57,7 +57,7 @@
 }
 .title{
     width:25%;
-    min-width: min(29vw, 8rem);
+    min-width: min(30vw, 8rem);
     animation-delay:.25s;
 }
 .progressBar{
@@ -73,6 +73,7 @@
 
 .proficiency{
     position:relative;
+    font-size: min(4vw,1em);
 }
 
 .progress{
