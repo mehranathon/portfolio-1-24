@@ -17,6 +17,7 @@
 
 .skillHeader{
     text-align: center;
+    animation-delay:0;
 }
 
 .SkillsContainer{
@@ -50,10 +51,14 @@
 .skillName{
     color: #ff8b3e;
     font-size: min(4vw,1rem);
+    filter:hue-rotate(0deg);
+    transition-property: filter;
+    transition-duration: .5s;
 }
 .title{
     width:25%;
     min-width: min(29vw, 8rem);
+    animation-delay:.25s;
 }
 .progressBar{
     position: relative;
@@ -118,7 +123,7 @@
 }
 @keyframes slideleft{
     from{
-        transform: translateX(100%);
+        transform: translateX(5rem);
         opacity:0;
     }
     to{
@@ -129,7 +134,7 @@
 
 @keyframes slideright{
     from{
-        transform: translateX(-100%);
+        transform: translateX(-5rem);
         opacity:0;
     }
     to{
