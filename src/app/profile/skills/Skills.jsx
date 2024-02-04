@@ -54,15 +54,15 @@ export const SkillsBox=()=>{
                 />
                 <div className={styles.skillContent}>
                 {
-                    skills[skill].map((entry,ind) => 
-                        <SkillEntry key={`${entry.name}_entry`} 
-                        {...{
-                            entry, 
-                            ind, 
-                            upDown, 
-                            delayTransition
-                        }}    
-                        />
+                skills[skill].map((entry,ind) => 
+                    <SkillEntry key={`${entry.name}_entry`} 
+                    {...{
+                        entry, 
+                        ind, 
+                        upDown, 
+                        delayTransition
+                    }}    
+                    />
                 )}
                 </div>
                 <TtButton
