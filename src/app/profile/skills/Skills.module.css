@@ -24,7 +24,8 @@
     display: flex;
     position: relative;
     height: 100%;
-    padding: 0.5rem min(2vw,1rem);
+    border-radius: 0.25rem;
+    /* padding: 0.5rem min(2vw,1rem); */
     margin:1rem 0;
     min-width: fit-content;
     width: 100%;
@@ -39,10 +40,9 @@
     flex-direction: column;
     height: fit-content;
     max-height: 100%;
-    padding: 0 min(2vw, 1rem);
+    padding: 2rem min(17vw, 3.5rem);
     overflow-x: hidden;
     overflow-y: auto;
-    margin: 0 0.5rem;
 }
 .skill{
     display:flex;
@@ -95,10 +95,19 @@
     animation: .25s fadein forwards;
 }
 .cycleButton{
+    position:absolute;
     cursor:pointer;
     line-height:0;
+    z-index:2;
+    top:50%;
+    transform: translateY(-50%);
 }
-
+.cycleButton:first-child{
+    left:1.25rem;
+}
+.cycleButton:last-child{
+    right:1.25rem;
+}
 
 .cycleButton:first-child  svg{
     transform:translateX(20%)
