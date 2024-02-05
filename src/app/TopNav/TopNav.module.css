@@ -6,7 +6,7 @@
     left:min(3vw,1rem);
     right:min(3vw,1rem);
     justify-content: space-between;
-    background-color: rgba(var(--foreground-rgb),.02);
+    background-color: rgb(var(--background-rgb));
     /* padding:.5rem; */
     height:4rem;
     opacity:0;
@@ -18,14 +18,7 @@
     margin-bottom: 0;
     flex:0;
     z-index:3;
-}
-.container::after{
-    position:absolute;
-    content:"";
-    height:100%;
-    width:100%;
-    background-color: rgb(var(--background-rgb));
-    z-index:-1;
+    /* transition:5s background-color!important; */
 }
 .container::before{
     position:absolute;
@@ -35,6 +28,7 @@
     top:-100%;
     background-color: rgb(var(--background-rgb));
     z-index:-1;
+    transition:.25s background-color!important;
 }
 .buttons{
     /* border:solid thin white; */
