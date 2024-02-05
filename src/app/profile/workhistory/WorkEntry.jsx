@@ -13,7 +13,7 @@ export const WorkEntry=({entry,ind,expanded,trackExpanded})=>{
         <div 
             className={styles.entry} 
             key={entry.company}
-            style={{animationDelay:0.01+logGrowth[ind]+"s"}}
+            style={{animationDelay:.25+logGrowth[ind]+"s"}}
         >
             <h2>{entry.title}</h2>
             <TtButton 
@@ -26,7 +26,7 @@ export const WorkEntry=({entry,ind,expanded,trackExpanded})=>{
             <span className={styles.dates}>{entry.dates}</span>
             <ul 
                 className={`${styles.responsibilities}${expanded?" "+styles.expanded:" "+styles.collapsed}`}
-                style={{animationDelay:0.75+logGrowth[ind*2]+"s"}}
+                style={{animationDelay:1+logGrowth[ind*2]+"s"}}
             >
             {
             entry.responsibilities.map( (bullet,ind) =>

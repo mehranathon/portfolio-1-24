@@ -1,0 +1,60 @@
+.container{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+    margin: 0 min(3vw,1rem);
+}
+
+.button{
+    color:rgba(var(--foreground-rgb),.8);
+    margin:.25rem;
+    cursor:pointer;
+    padding: 0.5rem;
+    background-color: transparent !important;
+    font-family: monospace;
+    font-size: 1.25rem;
+    font-weight:700;
+    transform: scaleX(.8);
+    border: none;
+    opacity:0;
+    animation: .5s fadein ease-in forwards;
+    transition:color .25s;
+}
+
+.button:hover{
+    background-color: rgba(var(--background-rgb),.7);
+}
+
+
+/* .button svg{
+    opacity:0;
+    animation: .25s .01s fadeup forwards;
+    transition: fill .25s;
+} */
+.button:active:hover{
+    color:rgba(var(--primary-color))!important;
+}
+
+.button:hover{
+    color:rgba(var(--foreground-rgb),1);
+}
+
+@keyframes fadeup{
+    from{
+        opacity:0;
+        transform: translateY(100%);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
