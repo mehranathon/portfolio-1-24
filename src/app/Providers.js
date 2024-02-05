@@ -22,6 +22,7 @@ export const TtProvider=(props)=>{
 
     useEffect(()=>{
         window.addEventListener("mousemove",trackmouse)
+        dispatch({sessionStorage})
     },[])
     useEffect(()=>{stateRef.current=state})
 

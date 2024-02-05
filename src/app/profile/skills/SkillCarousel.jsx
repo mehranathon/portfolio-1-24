@@ -5,11 +5,14 @@ import styles from "./Skills.module.css";
 import ArrowBackIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIos';
 import { TtButton } from "@/app/TtButton/TtButton";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SkillEntry } from "./SkillEntry";
+import { TooltipContext } from "@/app/Providers";
 
 export const SkillCarousel=()=>{
-    const [currentSkill,setCurrentSkill]=useState(parseInt(sessionStorage.getItem("skill"))||0)
+    const context=useContext(TooltipContext)
+    const ssStorage=context.state.sessionStorage
+    const [currentSkill,setCurrentSkill]=useState(parseInt(ssStorage?.getItem("skill")||0))
     const skill=skillList[currentSkill]
     const [upDown,setUpDown]=useState(null)
     const [delayTransition,setDelayTranstition]=useState(true)
@@ -18,7 +21,7 @@ export const SkillCarousel=()=>{
         const ind=getInd(upDown)
         setCurrentSkill(ind)
         setDelayTranstition(true)
-        sessionStorage.setItem("skill",ind)
+        ssStorage.setItem("skill",ind)
         setUpDown(upDown>0)
     }
     const getInd=(upDown)=>{
