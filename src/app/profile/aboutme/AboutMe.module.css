@@ -13,8 +13,14 @@
     height: 8rem;
 }
 .topCard a{
-    color:rgb(var(--primary-color));
+    color:#2fd5d5 !important;;
 }
+@media (pointer: coarse) {
+    .topCard a{
+        color:#2fd5d5 !important;;
+    }
+}
+
 .headshotContainer{
     border-radius: 0.25rem;
     height: 100%;
@@ -57,8 +63,14 @@
 }
 .wrapper{
     border-radius: .25rem;
-    overflow:hidden;
+    overflow:visible;
     margin-top:1rem;
+}
+
+@media (pointer: coarse) {
+    .wrapper{
+        overflow:visible;
+    }
 }
 .personalStatement{
     margin: 0;

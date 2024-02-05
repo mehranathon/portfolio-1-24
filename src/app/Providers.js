@@ -21,6 +21,7 @@ export const TtProvider=(props)=>{
     }
 
     useEffect(()=>{
+        document.head.append(<link rel='shortcut icon' type='image/x-icon' href='/smiley.svg' />)
         window.addEventListener("mousemove",trackmouse)
         dispatch({sessionStorage})
     },[])

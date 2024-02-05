@@ -5,15 +5,30 @@
     padding:0rem;
     height: 100%;
     overflow:hidden;
-    margin-top: 1rem;
+    overflow:visible;
+    /* margin-top: 1rem; */
 }
+
+@media (pointer: coarse) {
+    .company{
+        overflow: visible;
+    }
+}
+
 
 .entries{
     overflow-y: auto;
+    overflow:visible;
     height: 100%;
     width: 100%;
     padding:1rem;
     padding-top:0;
+}
+
+@media (pointer: coarse) {
+    .entries{
+        overflow: visible;
+    }
 }
 
 .container>h1{
@@ -73,6 +88,12 @@
     color: rgb(var(--primary-color));
 }
 
+@media (pointer: coarse) {
+    .company{
+        color:#2fd5d5 !important;;
+    }
+}
+
 .dates{
     display:block;
     margin-bottom:.5rem;
@@ -80,11 +101,18 @@
 
 .toggleCollapse{
     cursor:pointer;
+    color:#d9d9d9;
+    background-color:rgb(107, 107, 107);
+    border-radius:.25rem;
+    border:none !important;
+    outline:none !important;
     position:absolute;
     top:0;
     right:0;
     margin:.5rem;
     font-size: 0;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 
