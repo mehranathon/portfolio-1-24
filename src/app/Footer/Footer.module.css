@@ -2,15 +2,23 @@
     display: flex;
     justify-content: flex-end;
     padding: 0.5rem;
-    margin: 0 min(3vw,1rem);
+    /* margin: 0 min(3vw,1rem); */
+    padding: 0.5rem min(3vw,2rem);
+    flex: 0 1;
+    display: fixed;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgb(var(--background-rgb));
 }
 
 .button{
     color:rgba(var(--foreground-rgb),.8);
+    background-color: rgba(var(--foreground-rgb),.02);
+    border-radius: 50%;
     margin:.25rem;
     cursor:pointer;
     padding: 0.5rem;
-    background-color: transparent !important;
     font-family: monospace;
     font-size: 1.25rem;
     font-weight:700;
@@ -21,9 +29,9 @@
     transition:color .25s;
 }
 
-.button:hover{
+/* .button:hover{
     background-color: rgba(var(--background-rgb),.7);
-}
+} */
 
 
 /* .button svg{

@@ -1,15 +1,40 @@
 .container{
+    position:fixed;
     display:flex;
+    align-items: center;
+    top:.5rem;
+    left:min(3vw,1rem);
+    right:min(3vw,1rem);
     justify-content: space-between;
     background-color: rgba(var(--foreground-rgb),.02);
-    padding:.5rem;
+    /* padding:.5rem; */
+    height:4rem;
     opacity:0;
     /* transform: translateY(-120%); */
     /* animation: .25s 1s slide-down ease-in forwards; */
     animation: .25s .5s fadein ease-in forwards;
-    margin: min(3vw,1rem);
-    margin-top: 0.5rem;
+    /* margin: min(3vw,1rem);
+    margin-top: 0.5rem; */
     margin-bottom: 0;
+    flex:0;
+    z-index:3;
+}
+.container::after{
+    position:absolute;
+    content:"";
+    height:100%;
+    width:100%;
+    background-color: rgb(var(--background-rgb));
+    z-index:-1;
+}
+.container::before{
+    position:absolute;
+    content:"";
+    height:100%;
+    width:100%;
+    top:-100%;
+    background-color: rgb(var(--background-rgb));
+    z-index:-1;
 }
 .buttons{
     /* border:solid thin white; */
@@ -17,6 +42,8 @@
 
 .button{
     color:rgba(var(--foreground-rgb),.8);
+    width: 3rem;
+    height: 3rem;
     margin:.25rem;
     cursor:pointer;
     padding: 0.5rem;
@@ -24,11 +51,10 @@
     border: none;
     opacity:0;
     animation: .5s fadein ease-in forwards;
+    appearance: none;
 }
 
-.button:hover{
-    background-color: rgba(var(--background-rgb),.7);
-}
+
 
 
 .button svg{
@@ -36,18 +62,33 @@
     animation: .25s .01s fadeup forwards;
     transition: fill .25s;
 }
-.button:active:hover svg{
-    fill:rgba(var(--primary-color))
+
+
+.button.onpage svg, .button.onpage:hover path{
+    fill:rgba(var(--primary-color),1) !important;
+}
+.button.onpage{
+    color:rgb(var(--primary-color)) !important;
 }
 
-.button:hover svg{
-    color:rgba(var(--foreground-rgb),1);
-}
+@media (pointer: fine) {
+    /* .button:hover{
+        background-color: rgba(var(--background-rgb),.7);
+    } */
+    .button:active:hover svg, .button:active:hover path{
+        fill:rgba(var(--primary-color))
+    }
+    
+    .button:hover svg, .button:hover path{
+        color:rgba(var(--foreground-rgb),1);
+    }
+  }
 
-.button.onpage svg{
-    fill:rgb(var(--primary-color))
-}
-
+  @media (pointer: coarse) {
+    .button.onpage svg{
+        fill:#2fd5d5 !important;
+    }
+  }
 
 
 @keyframes slide-down{
