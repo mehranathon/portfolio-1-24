@@ -3,6 +3,7 @@ import "./globals.css";
 import { TtProvider } from "./Providers";
 import { TopNav } from "./TopNav/TopNav";
 import { ToolTip } from "./TtButton/TtButton";
+import { Footer } from "./Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
             <div className="top-container">
             {children}
             </div>
+            <Footer/>
             <ToolTip/>
           </TtProvider>
         </main>
