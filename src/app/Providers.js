@@ -8,6 +8,7 @@ const initialState =
     visible:false,
     text:"",
     mouseXy:[0,0],
+    personalStatement:null,
 }
 
 const reducer=(state,action)=>({...state,...action})
