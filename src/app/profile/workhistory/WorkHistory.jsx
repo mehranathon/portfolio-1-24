@@ -2,7 +2,7 @@
 
 import { workHistory } from "@/workHistory"
 import styles from "./WorkHistory.module.css"
-import { WorkEntry } from "./workEntry";
+import { WorkEntry } from "./WorkEntry";
 import { useEffect, useState,useContext } from "react";
 import { TooltipContext } from "@/app/Providers";
 
