@@ -19,10 +19,7 @@ export default function RootLayout({ children }) {
         <main className="main">
           <TtProvider>
             <TopNav/>
-            <div className="top-container">
             {children}
-            </div>
-            <Footer/>
             <ToolTip/>
           </TtProvider>
         </main>

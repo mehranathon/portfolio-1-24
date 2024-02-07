@@ -9,7 +9,8 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: rgb(var(--background-rgb));
+    height:4rem;
+    background-color:rgba(var(--background-rgb),1);
 }
 
 .button{
