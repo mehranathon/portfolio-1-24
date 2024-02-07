@@ -7,6 +7,7 @@ import styles from './TopNav.module.css'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import WorkIcon from '@mui/icons-material/Work';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
+import CodeIcon from '@mui/icons-material/Code';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 // import { TestButton } from "../TestButton/TestButton";
@@ -28,7 +29,10 @@ export const TopNav=()=>{
         router.push(path)
     }
 
+    const viewSource=()=>window.open('https://github.com/mehranathon/portfolio-1-24', '_blank').focus();
+
     useEffect(()=>{
+        
         const docStyle=document.documentElement.style
         docStyle.setProperty("--color-transition", ".25s")
         const userPref=localStorage.getItem("mode")
@@ -58,7 +62,7 @@ export const TopNav=()=>{
                 <TtButton 
                     className={`${styles.button} ${currentPage.endsWith("aboutme")?styles.onpage:""}`}
                     onClick={()=>navTo("/profile/aboutme")}
-                    icon=<EmojiPeopleIcon />
+                    icon=<EmojiPeopleIcon/>
                     tooltip="About Me"
                     style={{animationDelay:logGrowth[1]+delay+"s"}}
 
@@ -67,7 +71,7 @@ export const TopNav=()=>{
                     className={`${styles.button} ${currentPage.endsWith("skills")?styles.onpage:""}`}
                     onClick={()=>navTo("/profile/skills")}
                     // onClick={()=>setCurrentPage("skills")}
-                    icon=<FactCheckIcon />
+                    icon=<FactCheckIcon/>
                     tooltip="Skills"
                     style={{animationDelay:logGrowth[2]+delay+"s"}}
 
@@ -75,9 +79,15 @@ export const TopNav=()=>{
                 <TtButton 
                     className={`${styles.button} ${currentPage.endsWith("workhistory")?styles.onpage:""}`}
                     onClick={()=>navTo("/profile/workhistory")}
-                    icon=<WorkIcon />
+                    icon=<WorkIcon/>
                     tooltip="Work History"
                     style={{animationDelay:logGrowth[3]+delay+"s"}}
+                />
+                <TtButton 
+                    className={styles.button}
+                    onClick={viewSource}
+                    icon=<CodeIcon/>
+                    tooltip="View the Source Code on Github"
                 />
             </div>
             <TtButton 

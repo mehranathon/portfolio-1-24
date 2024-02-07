@@ -49,7 +49,6 @@ export const AboutMe=()=>{
                 </h3>
             </div>
         </div>
-        <div className={styles.wrapper}>
             <div className={styles.personalStatement}>
             {
                 personalStatement
@@ -57,7 +56,6 @@ export const AboutMe=()=>{
                 :""
             }
             </div>
-        </div>
         </div>
 
     )

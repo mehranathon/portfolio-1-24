@@ -47,14 +47,14 @@ export const SkillCarousel=()=>{
             >
                 {skill}
             </h1>
-            <div className={styles.SkillsContainer}>
-                <TtButton
+            <TtButton
                     className={styles.cycleButton} 
                     onClick={()=>cycleSkill(-1)}
                     icon=<ArrowBackIcon/>
                     tooltip="Previous"
                 
                 />
+            <div className={styles.SkillsContainer}>
                 <div className={styles.skillContent}>
                 {
                 skills[skill].map((entry,ind) => 
@@ -68,13 +68,13 @@ export const SkillCarousel=()=>{
                     />
                 )}
                 </div>
-                <TtButton
+            </div>
+            <TtButton
                     className={styles.cycleButton} 
                     onClick={()=>cycleSkill(1)}
                     icon=<ArrowForwardIcon/>
                     tooltip="Next"
                 />
-            </div>
         </div>
     )
 }

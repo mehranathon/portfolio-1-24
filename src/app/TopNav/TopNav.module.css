@@ -6,19 +6,13 @@
     left:min(3vw,1rem);
     right:min(3vw,1rem);
     justify-content: space-between;
-    background-color: rgb(var(--background-rgb));
-    /* padding:.5rem; */
+    background-color: rgba(var(--background-rgb),1);
     height:4rem;
     opacity:0;
-    /* transform: translateY(-120%); */
-    /* animation: .25s 1s slide-down ease-in forwards; */
     animation: .25s .5s fadein ease-in forwards;
-    /* margin: min(3vw,1rem);
-    margin-top: 0.5rem; */
     margin-bottom: 0;
     flex:0;
-    z-index:3;
-    /* transition:5s background-color!important; */
+    z-index:99;
 }
 .container::before{
     position:absolute;
@@ -26,7 +20,7 @@
     height:100%;
     width:100%;
     top:-100%;
-    background-color: rgb(var(--background-rgb));
+    background-color: rgba(var(--background-rgb),1);
     z-index:-1;
     transition:.25s background-color!important;
 }
@@ -54,7 +48,7 @@
 .button svg{
     opacity:0;
     animation: .25s .01s fadeup forwards;
-    transition: fill .25s;
+    /* transition: fill .25s 0s !important; */
 }
 
 
@@ -62,7 +56,7 @@
     fill:rgba(var(--primary-color),1) !important;
 }
 .button.onpage{
-    color:rgb(var(--primary-color)) !important;
+    color:rgba(var(--primary-color),1) !important;
 }
 
 @media (pointer: fine) {

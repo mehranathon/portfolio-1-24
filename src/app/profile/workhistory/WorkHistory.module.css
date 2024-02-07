@@ -3,8 +3,6 @@
     position:relative;
     flex-direction: column;
     padding:0rem;
-    height: 100%;
-    overflow:hidden;
     overflow:visible;
     /* margin-top: 1rem; */
 }
@@ -17,7 +15,6 @@
 
 
 .entries{
-    overflow-y: auto;
     overflow:visible;
     height: 100%;
     width: 100%;
