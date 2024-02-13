@@ -88,6 +88,7 @@ export const TopNav=()=>{
                     onClick={viewSource}
                     icon=<CodeIcon/>
                     tooltip="View the Source Code on Github"
+                    style={{animationDelay:logGrowth[4]+delay+"s"}}
                 />
             </div>
             <TtButton 
@@ -95,7 +96,7 @@ export const TopNav=()=>{
                 onClick={toggleMode}
                 icon={darkMode?<DarkModeIcon/>:<LightModeIcon/>}
                 tooltip={darkMode?"Dark Mode":"Light Mode"}
-                style={{animationDelay:logGrowth[4]+delay+"s"}}
+                style={{animationDelay:logGrowth[5]+delay+"s"}}
             />
         </div>
     )
