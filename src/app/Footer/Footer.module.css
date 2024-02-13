@@ -1,0 +1,69 @@
+.container{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+    /* margin: 0 min(3vw,1rem); */
+    padding: 0.5rem min(3vw,2rem);
+    flex: 0 1;
+    display: fixed;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height:4rem;
+    background-color:rgba(var(--background-rgb),1);
+}
+
+.button{
+    color:rgba(var(--foreground-rgb),.8);
+    background-color: rgba(var(--foreground-rgb),.02);
+    border-radius: 50%;
+    margin:.25rem;
+    cursor:pointer;
+    padding: 0.5rem;
+    font-family: monospace;
+    font-size: 1.25rem;
+    font-weight:700;
+    transform: scaleX(.8);
+    border: none;
+    opacity:0;
+    animation: .5s fadein ease-in forwards;
+    transition:color .25s;
+}
+
+/* .button:hover{
+    background-color: rgba(var(--background-rgb),.7);
+} */
+
+
+/* .button svg{
+    opacity:0;
+    animation: .25s .01s fadeup forwards;
+    transition: fill .25s;
+} */
+.button:active:hover{
+    color:rgba(var(--primary-color))!important;
+}
+
+.button:hover{
+    color:rgba(var(--foreground-rgb),1);
+}
+
+@keyframes fadeup{
+    from{
+        opacity:0;
+        transform: translateY(100%);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}

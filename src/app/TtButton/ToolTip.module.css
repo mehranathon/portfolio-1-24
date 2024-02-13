@@ -1,0 +1,51 @@
+.tooltip{
+    position:absolute;
+    max-width:20rem;
+    color:rgb(var(--foreground-rgb));
+    z-index:99;
+    transition: .1s top, .1s left;
+    opacity:0;
+    transform:scale(0);
+    animation: .25s 1s fadein forwards, .25s 1s grow forwards;
+}
+
+.tooltip.active{
+    opacity:1;
+}
+
+.tooltip::after{
+    content:"";
+    position:absolute;
+    height:100%;
+    width:100%;
+    background-color:rgba(var(--primary-color),.8);
+    top:0;
+    left:0;
+    filter:saturate(0.75);
+    opacity:.9;
+    z-index:-1;
+    border-radius: .25rem;;
+}
+
+@media (pointer: coarse) {
+    .tooltip{
+        display:none;
+    }
+  }
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+@keyframes grow{
+    from{
+        transform:scale(0);
+    }
+    to{
+        transform:scale(1)
+    }
+}

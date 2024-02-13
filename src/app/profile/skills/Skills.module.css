@@ -1,0 +1,171 @@
+.container{
+    overflow-y:auto;
+    overflow-x: hidden;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 min(3vw,1rem);
+}
+.slideRight{
+    opacity:0;
+    animation:.5s slideright forwards;
+}
+.slideLeft{
+    opacity:0;
+    animation:.5s slideleft forwards;
+}
+
+.skillHeader{
+    text-align: center;
+    animation-delay:0;
+}
+
+.SkillsContainer{
+    display: flex;
+    position: relative;
+    height: 100%;
+    border-radius: 0.25rem;
+    /* padding: 0.5rem min(2vw,1rem); */
+    margin-top:1rem;
+    min-width: fit-content;
+    width: 100%;
+    transition: .5s height;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgba(var(--foreground-rgb),.02);
+    opacity:0;
+    animation: .25s .25s slideleft forwards;
+}
+.skillContent{
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    height: fit-content;
+    max-height: 100%;
+    padding: 2rem min(17vw, 3.5rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.skill{
+    display:flex;
+    margin-bottom:1rem;
+}
+.skillName{
+    color: #ff8b3e;
+    font-size: min(4vw,1rem);
+    filter:hue-rotate(0deg);
+    transition-property: filter;
+    transition-duration: .5s;
+}
+.title{
+    width:25%;
+    min-width: min(30vw, 8rem);
+    animation-delay:.25s;
+}
+.progressBar{
+    position: relative;
+    width:100%;
+    border-radius:.25rem;
+    padding: 0.25rem;
+    overflow:hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.proficiency{
+    position:relative;
+    font-size: min(4vw,1em);
+}
+
+.progress{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    height: 100%;
+    background-color: #ffa86f;
+    z-index:-1;
+    max-width:0%;
+    animation: .5s load forwards ease-in;
+    filter:hue-rotate(0deg);
+    transition: 1s filter;
+
+}
+.proficiency{
+    opacity:0;
+    animation: .25s fadein forwards;
+}
+.cycleButton{
+    position:fixed;
+    cursor:pointer;
+    line-height:0;
+    z-index:2;
+    top:50vh;
+    left:1.5rem;
+    color:#d9d9d9;
+    background-color:#6b6b6b;
+    transform: translateY(-50%);
+    outline: none!important;
+    border:none!important;
+    border-radius:.25rem;
+    padding: 0.25rem 0.1rem;
+    transform: translateY(100%);
+    -webkit-appearance: none;
+    appearance: none;
+}
+.cycleButton:last-child{
+    left:auto;
+    right:1.5rem;
+}
+
+.cycleButton svg{
+    transform:translateX(15%)
+}
+
+.cycleButton:last-child svg{
+    transform: none;
+}
+
+
+
+
+@keyframes load{
+    from{
+        max-width: 0%;
+    }
+    to{
+        max-width:100%;
+    }
+}
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+@keyframes slideleft{
+    from{
+        transform: translateX(5rem);
+        opacity:0;
+    }
+    to{
+        transform:translateX(0%);
+        opacity:1;
+    }
+}
+
+@keyframes slideright{
+    from{
+        transform: translateX(-5rem);
+        opacity:0;
+    }
+    to{
+        transform:translateX(0%);
+        opacity:1;
+    }
+}

@@ -1,0 +1,109 @@
+.container{
+    position:fixed;
+    display:flex;
+    align-items: center;
+    top:.5rem;
+    left:min(3vw,1rem);
+    right:min(3vw,1rem);
+    justify-content: space-between;
+    background-color: rgba(var(--background-rgb),1);
+    height:4rem;
+    opacity:0;
+    animation: .25s .5s fadein ease-in forwards;
+    margin-bottom: 0;
+    flex:0;
+    z-index:99;
+}
+.container::before{
+    position:absolute;
+    content:"";
+    height:100%;
+    width:100%;
+    top:-100%;
+    background-color: rgba(var(--background-rgb),1);
+    z-index:-1;
+    transition:.25s background-color!important;
+}
+.buttons{
+    /* border:solid thin white; */
+}
+
+.button{
+    color:rgba(var(--foreground-rgb),.8);
+    width: 3rem;
+    height: 3rem;
+    margin:.25rem;
+    cursor:pointer;
+    padding: 0.5rem;
+    background-color: transparent !important;
+    border: none;
+    opacity:0;
+    animation: .5s fadein ease-in forwards;
+    appearance: none;
+}
+
+
+
+
+.button svg{
+    opacity:0;
+    animation: .25s .01s fadeup forwards;
+    /* transition: fill .25s 0s !important; */
+}
+
+
+.button.onpage svg, .button.onpage:hover path{
+    fill:rgba(var(--primary-color),1) !important;
+}
+.button.onpage{
+    color:rgba(var(--primary-color),1) !important;
+}
+
+@media (pointer: fine) {
+    /* .button:hover{
+        background-color: rgba(var(--background-rgb),.7);
+    } */
+    .button:active:hover svg, .button:active:hover path{
+        fill:rgba(var(--primary-color))
+    }
+    
+    .button:hover svg, .button:hover path{
+        color:rgba(var(--foreground-rgb),1);
+    }
+  }
+
+  @media (pointer: coarse) {
+    .button.onpage svg{
+        fill:#2fd5d5 !important;
+    }
+  }
+
+
+@keyframes slide-down{
+    from{
+        transform: translateY(-120%);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeup{
+    from{
+        opacity:0;
+        transform: translateY(100%);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}

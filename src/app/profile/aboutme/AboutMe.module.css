@@ -1,0 +1,142 @@
+.container{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0rem min(3vw,1rem);
+    overflow: visible;
+}
+.topCard{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: min(35vw, 8rem);
+    flex:0;
+}
+.topCard a{
+    color:#2fd5d5 !important;;
+}
+@media (pointer: coarse) {
+    .topCard a{
+        color:#2fd5d5 !important;;
+    }
+}
+
+.headshotContainer{
+    border-radius: 0.25rem;
+    height: inherit;
+    width:auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.headshot{
+    height:100%;
+    width:auto;
+}
+
+.headshotContainer.loaded{
+    animation:.5s .25s fadein forwards;
+}
+
+.info{
+    display: flex;
+    padding-left: 0.5rem;
+    height:inherit;
+    position: relative;
+    border-radius: 0.25rem;
+    margin-left: 1rem;
+    background-color: rgba(var(--foreground-rgb),.02);
+    opacity:0;
+    flex-direction: column;
+    justify-content: center;
+    animation:.25s .5s fadein forwards;
+    flex:1;
+}
+
+.info h1, .info h2, .info h3{
+    opacity:0;
+    animation:.25s .25s slideleft forwards;
+}
+
+.personalStatement{
+    margin-top:1rem;
+    background-color: rgba(var(--foreground-rgb),.02);
+    border-radius: 0.25rem;
+    overflow-y: visible;
+    height: min-content;
+    padding:1rem;
+    opacity:0;
+    animation: .25s .5s fadein forwards;
+    flex:0;
+}
+
+.personalStatement::-webkit-scrollbar-track {
+    border-radius:.25rem
+}
+
+.personalStatement p{
+    opacity:0;
+    line-height:0;
+    /* margin-top:1rem; */
+    /* max-width:30rem; */
+    animation: 1s .75s expand forwards;
+}
+
+@keyframes slideleft{
+    from{
+        opacity:0;
+        transform: translateX(5rem);
+    }
+    to{
+        opacity:1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes expand{
+    0%{
+        opacity:0;
+        line-height:0;
+        margin-top:0;
+    }
+    50%{
+        opacity:0;
+        line-height:1;
+        margin-top:1rem;
+    }
+    100%{
+        opacity:1;
+        line-height:1;
+        margin-top:1rem;
+    }
+
+}
+
+@keyframes expandhorizontal{
+    0%{
+        opacity:0;
+        max-width:1rem;
+    }
+    50%{
+        opacity:1;
+        max-width:1rem;
+    }
+    100%{
+        opacity:1;
+        max-width:100%;
+    }
+}
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:100;
+    }
+}
