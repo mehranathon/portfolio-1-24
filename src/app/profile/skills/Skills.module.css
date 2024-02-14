@@ -30,12 +30,16 @@
     margin-top:1rem;
     min-width: fit-content;
     width: 100%;
-    transition: .5s height;
+    transition: .5s height, .25s right;
     align-items: center;
     overflow: hidden;
     background-color: rgba(var(--foreground-rgb),.02);
     opacity:0;
     animation: .25s .25s slideleft forwards;
+}
+
+.SkillsContainer *{
+    user-select: none;
 }
 .skillContent{
     display: flex;
@@ -128,6 +132,9 @@
     transform: none;
 }
 
+.swiping{
+    background-color: rgba(47, 213, 213,1);
+}
 
 
 
